@@ -1,0 +1,13 @@
+.bg-light {
+    background-color: initial !important; /* デフォルト値に戻す */
+}
+
+.app-background {
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2)), url('/images/windows.jpg') center center / cover;
+    z-index: -1;
+}
+
+.navbar-nav {
+    margin-left: auto;
+    text-align: right; /* 将来的には削除 */
+}

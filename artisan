@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Console\Input\ArgvInput;
+
+// Laravelの処理開始時刻を記録
+define('LARAVEL_START', microtime(true));
+
+// Composer オートローダーを読み込み
+// すべての依存関係（Laravel本体やパッケージ）のクラスを自動読み込み
+require __DIR__.'/vendor/autoload.php';
+
+// Laravelアプリケーションを初期化し、コマンドを処理
+// コマンドライン引数（ArgvInput）に基づいて操作を実行
+$status = (require_once __DIR__.'/bootstrap/app.php')
+    ->handleCommand(new ArgvInput);
+
+// コマンドの実行結果を終了ステータスとして返却
+exit($status);

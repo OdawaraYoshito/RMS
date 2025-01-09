@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PHPUnitの設定ファイル -->
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+    bootstrap="vendor/autoload.php"
+    colors="true"
+>
+    <!-- テストスイートの設定 -->
+    <testsuites>
+        <!-- 単体テストを含むスイート -->
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory> <!-- 単体テストのディレクトリ -->
+        </testsuite>
+        <!-- 機能テストを含むスイート -->
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory> <!-- 機能テストのディレクトリ -->
+        </testsuite>
+    </testsuites>
+
+    <!-- テスト対象のコードを指定 -->
+    <source>
+        <include>
+            <directory>app</directory> <!-- アプリケーションコードのディレクトリ -->
+        </include>
+    </source>
+
+    <!-- テスト時に使用する環境変数 -->
+    <php>
+        <env name="APP_ENV" value="testing"/> <!-- テスト環境用の設定 -->
+        <env name="APP_MAINTENANCE_DRIVER" value="file"/> <!-- メンテナンスモードの設定 -->
+        <env name="BCRYPT_ROUNDS" value="4"/> <!-- bcryptハッシュの計算回数を減らして高速化 -->
+        <env name="CACHE_STORE" value="array"/> <!-- テスト用のキャッシュ設定 -->
+        <!-- データベース設定 -->
+        <!-- <env name="DB_CONNECTION" value="sqlite"/> -->
+        <!-- <env name="DB_DATABASE" value=":memory:"/> -->
+        <env name="MAIL_MAILER" value="array"/> <!-- メール送信をシミュレート -->
+        <env name="PULSE_ENABLED" value="false"/> <!-- Pulseの無効化 -->
+        <env name="QUEUE_CONNECTION" value="sync"/> <!-- キュー処理の同期設定 -->
+        <env name="SESSION_DRIVER" value="array"/> <!-- セッションをメモリ内で管理 -->
+        <env name="TELESCOPE_ENABLED" value="false"/> <!-- Telescopeの無効化 -->
+    </php>
+</phpunit>
