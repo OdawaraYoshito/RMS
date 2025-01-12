@@ -25,3 +25,12 @@ yarn-error.log
 
 # IDE Helper Model File
 _ide_helper_models.php
+
+# プロジェクトの動作には影響のないOS由来の隠しファイルを無視する
+.DS_Store
+.Spotlight-V100
+.Trashes
+Icon\r
+Thumbs.db
+ehthumbs.db
+Desktop.ini
