@@ -37,6 +37,9 @@ RUN php artisan view:cache
 # パーミッションの設定
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
+# マイグレーションを強制実行
+RUN php artisan migrate --force
+
 # ポート番号を公開
 EXPOSE 8000
 
