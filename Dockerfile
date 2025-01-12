@@ -1,5 +1,5 @@
 # ベースイメージを指定 (PHP 8.1 + Composer + Node.js)
-FROM php:8.1-fpm
+FROM php:8.2-fpm
 
 # 必要なパッケージをインストール
 RUN apt-get update && apt-get install -y \
@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo pdo_mysql mbstring zip
 
 # Composerをインストール
-COPY --from=composer:2.5 /usr/bin/composer /usr/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Node.jsとnpmをインストール
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
@@ -29,8 +29,16 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader
 RUN npm install && npm run build
 
+# アプリケーションのキャッシュを生成
+RUN php artisan config:cache
+RUN php artisan route:cache
+RUN php artisan view:cache
+
+# パーミッションの設定
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+
 # ポート番号を公開
 EXPOSE 8000
 
 # アプリケーションの起動コマンド
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+CMD ["php-fpm"]
