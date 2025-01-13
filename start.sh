@@ -23,6 +23,12 @@ php artisan view:cache
 echo "Running migrations..."
 php artisan migrate --force
 
+# PHP-FPMのソケットファイルを作成
+echo "Ensuring PHP-FPM socket exists..."
+mkdir -p /var/run/php
+touch /var/run/php-fpm.sock
+chmod 666 /var/run/php-fpm.sock
+
 # サービスを起動
 echo "Starting PHP-FPM..."
 php-fpm
