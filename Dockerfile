@@ -7,6 +7,9 @@ WORKDIR /var/www/html
 # 必要なアプリケーションファイルをコピー
 COPY . .
 
+# NGINXの設定ファイルをコピー
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # パーミッションの設定
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
