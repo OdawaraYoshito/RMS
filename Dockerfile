@@ -5,8 +5,7 @@ FROM richarvey/nginx-php-fpm:latest
 COPY . .
 
 # Node.jsとnpmをインストール
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs
+RUN apk add --no-cache nodejs npm
 
 # Image config
 # Composerスクリプトをスキップ
