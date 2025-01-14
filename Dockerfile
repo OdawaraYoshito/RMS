@@ -1,5 +1,5 @@
 # ベースイメージを指定 (NGINX + PHP-FPM)
-FROM richarvey/nginx-php-fpm:1.7.2
+FROM richarvey/nginx-php-fpm:latest
 
 # プロジェクトの全ファイルをコンテナ内にコピー
 COPY . .
