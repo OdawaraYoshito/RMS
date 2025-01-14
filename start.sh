@@ -4,6 +4,11 @@
 echo "Running composer"
 composer install --no-dev --working-dir=/var/www/html
 
+# フロントエンドのビルド
+echo "Building frontend assets..."
+npm install
+npm run build
+
 # アプリケーションキャッシュの生成
 echo "Caching config..."
 php artisan config:cache
