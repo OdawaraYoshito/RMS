@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Composer依存関係をインストール
+echo "Running composer"
+composer install --no-dev --working-dir=/var/www/html
+
+# アプリケーションキャッシュの生成
+echo "Caching config..."
+php artisan config:cache
+
+echo "Caching routes..."
+php artisan route:cache
+
+# マイグレーションを強制実行
+echo "Running migrations..."
+php artisan migrate --force
+
