@@ -12,6 +12,14 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <!-- 右側のナビゲーションメニュー -->
+
+            @if (Auth::check())
+                <p>認証済み: {{ Auth::user()->name }} ({{ Auth::user()->email }})</p>
+                <p>メール認証済み: {{ Auth::user()->email_verified_at ? 'はい' : 'いいえ' }}</p>
+            @else
+                <p>未認証ユーザーです。</p>
+            @endif
+
             <ul class="navbar-nav ms-auto">
                 <!-- ダッシュボードリンク -->
                 <li class="nav-item">
