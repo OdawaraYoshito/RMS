@@ -27,9 +27,9 @@ Route::resource('companies', CompanyController::class)
 Route::resource('people', PersonController::class)
     ->middleware(['auth']);
 
-// ダッシュボード（認証＆メール認証が必要）
+// ダッシュボード（認証が必要）
 Route::get('/dashboard', DashboardController::class)
-    ->middleware(['auth', 'verified'])
+    ->middleware(['auth'])
     ->name('dashboard');
 
 // プロフィール設定（認証が必要）
