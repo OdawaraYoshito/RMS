@@ -15,7 +15,7 @@ class CompaniesAndPeopleSeeder extends Seeder
             'email' => 'test@example.com'
         ], [
             'name' => 'Test User',
-            'password' => bcrypt('password')
+            'password' => bcrypt('password222')
         ]);
 
         // テスト会社を作成
