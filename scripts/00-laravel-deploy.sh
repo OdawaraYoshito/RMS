@@ -9,6 +9,10 @@ echo "Building frontend assets..."
 npm install
 npm run build
 
+# ビューキャッシュをクリア
+echo "Clearing view cache..."
+php artisan view:clear
+
 # アプリケーションキャッシュの生成
 echo "Caching config..."
 php artisan config:cache
@@ -20,3 +24,6 @@ php artisan route:cache
 echo "Running migrations..."
 php artisan migrate --force
 
+# シーダーを実行
+echo "Seeding database..."
+php artisan db:seed --force
