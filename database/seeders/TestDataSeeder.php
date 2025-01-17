@@ -10,18 +10,11 @@ class TestDataSeeder extends Seeder
 {
     public function run()
     {
-        // 対象ユーザーIDを指定
-        $userId = 5;
-
+        // テストデータを一括登録
         // 会社100件を作成
-        Company::factory(100)->create([
-            'user_id' => $userId, // ユーザーIDを指定
-        ])->each(function ($company) use ($userId) {
-            // 各会社に関連する人物を作成
-            Person::factory(1)->create([
-                'company_id' => $company->id,
-                'user_id' => $userId, // ユーザーIDを指定
-            ]);
-        });
+        Company::factory(100)->create();
+
+        // 人物100件を作成
+        Person::factory(100)->create();
     }
 }

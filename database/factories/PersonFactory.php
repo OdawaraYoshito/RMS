@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Person;
 use App\Models\Company;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -27,8 +26,7 @@ class PersonFactory extends Factory
     public function definition(): array
     {
         return [
-            // データベース内のランダムなユーザIDを取得(ユーザが存在しない場合、新規作成)
-            'user_id' => User::inRandomOrder()->first()?->id ?? User::factory()->create()->id,
+            'user_id' => 5, // ユーザID（必要に応じて変更可能）
             'name' => $this->faker->name, // 人物名
             'company_id' => Company::inRandomOrder()->first()->id ?? null, // ランダムな会社に紐付け（存在しない場合はnull）
             'contact' => $this->faker->safeEmail, // メールアドレス
