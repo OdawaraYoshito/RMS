@@ -23,3 +23,7 @@ php artisan route:cache
 # マイグレーションを強制実行
 echo "Running migrations..."
 php artisan migrate --force
+
+# シーダーを実行
+echo "Seeding database..."
+php artisan db:seed --force
