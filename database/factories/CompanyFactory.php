@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Company;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -25,7 +26,8 @@ class CompanyFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 99, // ユーザID（必要に応じて変更可能）
+            // データベース内のランダムなユーザIDを取得(ユーザが存在しない場合、新規作成)
+            'user_id' => User::inRandomOrder()->first()?->id ?? User::factory()->create()->id,
             'name' => $this->faker->company, // 会社名
             'url' => $this->faker->url, // 会社のウェブサイトURL
             'status' => $this->faker->randomElement(['active', 'inactive']), // ステータス（activeまたはinactive）
