@@ -27,3 +27,6 @@ php artisan migrate --force
 # シーダーを実行
 echo "Seeding database..."
 php artisan db:seed --force
+
+# シーダーの実行（テストデータ用）
+php artisan db:seed --class=TestDataSeeder
