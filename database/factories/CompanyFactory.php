@@ -25,7 +25,7 @@ class CompanyFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 5, // ユーザID（必要に応じて変更可能）
+            'user_id' => 99, // ユーザID（必要に応じて変更可能）
             'name' => $this->faker->company, // 会社名
             'url' => $this->faker->url, // 会社のウェブサイトURL
             'status' => $this->faker->randomElement(['active', 'inactive']), // ステータス（activeまたはinactive）
