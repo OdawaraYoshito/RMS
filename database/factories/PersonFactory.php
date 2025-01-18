@@ -26,7 +26,7 @@ class PersonFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 99, // ユーザID（必要に応じて変更可能）
+            'user_id' => null, // 初期値はnullで外部からの値を受け入れる
             'name' => $this->faker->name, // 人物名
             'company_id' => Company::inRandomOrder()->first()->id ?? null, // ランダムな会社に紐付け（存在しない場合はnull）
             'contact' => $this->faker->safeEmail, // メールアドレス

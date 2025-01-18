@@ -11,12 +11,12 @@ class TestDataSeeder extends Seeder
 {
     public function run()
     {
-        // id=99 のテストユーザを作成
+        // id=88 のテストユーザを作成
         $user = User::firstOrCreate(
-            ['id' => 99],
+            ['id' => 88],
             [
-                'name' => 'Test User 99',
-                'email' => 'test99@example.com',
+                'name' => 'Test User 88',
+                'email' => 'test88@example.com',
                 'password' => bcrypt('password111'),
             ]
         );
