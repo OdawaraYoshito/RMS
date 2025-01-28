@@ -9,6 +9,7 @@
 - 会社情報（名前、URL、ステータス、備考など）の管理
 - 人物情報（名前、所属会社、連絡先、ステータス、備考など）の管理
 - 検索機能を活用した迅速な情報アクセス
+- CSV/Excel形式でのデータのインポート／エクスポート
 - 認証とセキュリティの向上を重視した設計
 
 ## インストール手順
@@ -22,8 +23,8 @@
 ### 手順
 1. リポジトリをクローンします:
    ```bash
-   git clone https://github.com/your-username/your-repository.git
-   cd your-repository
+   cd ~/local
+   git clone https://github.com/OdawaraYoshito/RMS.git
    ```
 
 2. 依存関係をインストールします:

@@ -11,8 +11,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <!-- 右側のナビゲーションメニュー -->
-
+            <!-- 認証情報の簡易表示(デバッグ用) -->
             @if (Auth::check())
                 <p>認証済み: {{ Auth::user()->name }} ({{ Auth::user()->email }})</p>
                 <p>メール認証済み: {{ Auth::user()->email_verified_at ? 'はい' : 'いいえ' }}</p>
@@ -20,16 +19,67 @@
                 <p>未認証ユーザーです。</p>
             @endif
 
+            <!-- 右側のナビゲーションメニュー -->
             <ul class="navbar-nav ms-auto">
                 <!-- ダッシュボードリンク -->
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
                 </li>
 
-                <!-- ユーザーメニュー（ログイン時のみ表示） -->
+                <!-- エクスポートメニュー -->
                 @auth
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                        <a class="nav-link dropdown-toggle" href="#" id="exportDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ __('Export Data') }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="exportDropdown">
+                            <!-- エクスポート: 会社 -->
+                            <li class="dropdown-item">
+                                <a href="{{ route('export.companies', ['format' => 'xlsx']) }}">{{ __('Export Companies (Excel)') }}</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="{{ route('export.companies', ['format' => 'csv']) }}">{{ __('Export Companies (CSV)') }}</a>
+                            </li>
+                            <!-- エクスポート: 人物 -->
+                            <li class="dropdown-item">
+                                <a href="{{ route('export.people', ['format' => 'xlsx']) }}">{{ __('Export People (Excel)') }}</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="{{ route('export.people', ['format' => 'csv']) }}">{{ __('Export People (CSV)') }}</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- インポートメニュー -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="importDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ __('Import Data') }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="importDropdown">
+                            <!-- インポート: 会社 -->
+                            <li>
+                                <form action="{{ route('import.companies') }}" method="POST" enctype="multipart/form-data" class="dropdown-item">
+                                    @csrf
+                                    <label>{{ __('Import Companies') }}</label>
+                                    <input type="file" name="file" accept=".xlsx,.csv" class="form-control form-control-sm">
+                                    <button type="submit" class="btn btn-sm btn-primary mt-2">{{ __('Upload') }}</button>
+                                </form>
+                            </li>
+                            <!-- インポート: 人物 -->
+                            <li>
+                                <form action="{{ route('import.people') }}" method="POST" enctype="multipart/form-data" class="dropdown-item">
+                                    @csrf
+                                    <label>{{ __('Import People') }}</label>
+                                    <input type="file" name="file" accept=".xlsx,.csv" class="form-control form-control-sm">
+                                    <button type="submit" class="btn btn-sm btn-primary mt-2">{{ __('Upload') }}</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- ユーザーメニュー -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

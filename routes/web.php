@@ -5,6 +5,7 @@ use App\Http\Controllers\PersonController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\ImportExportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit'); // プロフィール編集
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update'); // プロフィール更新
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy'); // プロフィール削除
+});
+
+// インポート/エクスポート機能（認証が必要）
+Route::middleware(['auth'])->group(function () {
+    // エクスポートルート
+    Route::get('/export/companies', [ImportExportController::class, 'exportCompanies'])
+        ->name('export.companies'); // format=xlsx または format=csv をクエリに指定
+    Route::get('/export/people', [ImportExportController::class, 'exportPeople'])
+        ->name('export.people'); // format=xlsx または format=csv をクエリに指定
+
+    // インポートルート
+    Route::post('/import/companies', [ImportExportController::class, 'importCompanies'])->name('import.companies');
+    Route::post('/import/people', [ImportExportController::class, 'importPeople'])->name('import.people');
 });
 
 // Breeze の認証関連ルート（auth.phpで定義）

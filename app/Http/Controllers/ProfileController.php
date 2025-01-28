@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -64,10 +65,17 @@ class ProfileController extends Controller
 
         $user = $request->user();
 
-        Auth::logout(); // ログアウト処理
+        // 関連データをユーザ単位で削除
+        Log::info("Deleting user ID: {$user->id} and related data.");
 
-        // ユーザ情報を削除
+        $user->people()->delete(); // ユーザが所有する人物データの削除
+        $user->companies()->delete(); // ユーザが所有する会社データの削除
+
+        Auth::logout();
+
         $user->delete();
+
+        Log::info("User ID {$user->id} and related data were successfully deleted.");
 
         // セッションを無効化し、クロスセッション攻撃を防止
         $request->session()->invalidate();

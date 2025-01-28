@@ -45,6 +45,8 @@ class User extends Authenticatable
 
     /**
      * ユーザが所有する会社を取得するリレーション
+     *
+     * @return HasMany
      */
     public function companies(): HasMany
     {
@@ -53,6 +55,8 @@ class User extends Authenticatable
 
     /**
      * ユーザが管理する人物を取得するリレーション
+     *
+     * @return HasManyThrough
      */
     public function people(): HasManyThrough
     {

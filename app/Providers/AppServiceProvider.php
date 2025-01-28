@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Routing\UrlGenerator;
 
 class AppServiceProvider extends ServiceProvider
@@ -31,6 +33,15 @@ class AppServiceProvider extends ServiceProvider
         if (env('APP_ENV') === 'production') {
             $url->forceScheme('https');
         }
+
+        // SQLクエリログの記録
+        DB::listen(function ($query) {
+            Log::info('SQL Query Executed:', [
+                'sql' => $query->sql,                  // 実行されたSQL文
+                'bindings' => $query->bindings,       // SQL文にバインドされた値
+                'time' => $query->time . ' ms',       // クエリの実行時間
+            ]);
+        });
 
         // 必要に応じて設定を追加
         // 例: ページネーションのデフォルトスタイル変更など

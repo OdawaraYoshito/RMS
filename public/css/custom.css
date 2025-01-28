@@ -9,9 +9,25 @@
 
 .navbar-nav {
     margin-left: auto;
-    text-align: right; /* 将来的には削除 */
+    text-align: right; /* テキストを右寄せ */
 }
 
 .collapse {
     visibility: visible !important; /* デバッグ用）メニューが開いた状態にする */
+}
+
+.dropdown-menu {
+    min-width: 300px; /* ドロップダウンの最低幅を指定 */
+    max-width: 1000px; /* 必要に応じて最大幅も指定 */
+    white-space: normal; /* テキストの折り返しを許可 */
+    text-align: right; /* テキストを右寄せ */
+}
+
+.dropdown-item form {
+    display: block;
+    width: 100%; /* フォームの幅をドロップダウンメニューに合わせる */
+}
+
+.dropdown-item input[type="file"] {
+    width: 100%; /* ファイル選択ボックスの幅を100%に設定 */
 }
