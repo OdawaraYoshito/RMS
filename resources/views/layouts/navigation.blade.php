@@ -26,6 +26,11 @@
                     <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
                 </li>
 
+                <!-- お問い合わせページへのリンク -->
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">{{ __('Contact Us') }}</a>
+                </li>
+
                 <!-- エクスポートメニュー -->
                 @auth
                     <li class="nav-item dropdown">
