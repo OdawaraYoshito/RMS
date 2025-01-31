@@ -24,12 +24,12 @@
         <div class="d-flex justify-content-between mb-4">
             <div>
                 <!-- 会社リストと人物リストへのリンク -->
-                <a href="{{ route('companies.index') }}" class="btn btn-outline-primary me-2">会社リストを見る</a>
+                <a href="{{ route('companies.index') }}" class="btn btn-outline-primary">会社リストを見る</a>
                 <a href="{{ route('people.index') }}" class="btn btn-outline-secondary">人物リストを見る</a>
             </div>
-            <div>
+            <div class="create-buttons">
                 <!-- 新しい会社と人物の作成リンク -->
-                <a href="{{ route('companies.create') }}" class="btn btn-primary me-2">新しい会社を作成</a>
+                <a href="{{ route('companies.create') }}" class="btn btn-primary">新しい会社を作成</a>
                 <a href="{{ route('people.create') }}" class="btn btn-secondary">新しい人物を作成</a>
             </div>
         </div>

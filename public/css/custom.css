@@ -16,6 +16,14 @@
     visibility: visible !important; /* デバッグ用）メニューが開いた状態にする */
 }
 
+.justify-content-between {
+    justify-content: space-between !important;
+}
+
+.create-buttons {
+    text-align: right;
+}
+
 .dropdown-menu {
     min-width: 300px; /* ドロップダウンの最低幅を指定 */
     max-width: 1000px; /* 必要に応じて最大幅も指定 */

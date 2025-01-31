@@ -83,6 +83,9 @@
 ### 会社一覧画面
 ![Company List Screenshot](screenshots/company-list.png)
 
+### ダッシュボード画面
+![Dashboard Screenshot](screenshots/dashboard.png)
+
 ### ヘルプ画面
 ![Help Screenshot](screenshots/help-page.png)
 
