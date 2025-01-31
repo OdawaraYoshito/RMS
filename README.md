@@ -72,5 +72,19 @@
    php artisan test
    ```
 
+## スクリーンショット
+
+### ホーム画面
+![Welcome Screenshot](screenshots/welcome-page.png)
+
+### 人物登録画面
+![Add Person Screenshot](screenshots/add-person.png)
+
+### 会社一覧画面
+![Company List Screenshot](screenshots/company-list.png)
+
+### ヘルプ画面
+![Help Screenshot](screenshots/help-page.png)
+
 ## ライセンス
 このプロジェクトは MITライセンス のもと提供されています。
