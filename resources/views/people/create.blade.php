@@ -85,10 +85,10 @@
                                 @enderror
                             </div>
 
-                            <!-- 保存ボタン -->
+                            <!-- 登録ボタン -->
                             <div class="d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('保存') }}
+                                    {{ __('登録') }}
                                 </button>
                             </div>
                         </form>

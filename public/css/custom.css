@@ -31,3 +31,45 @@
 .dropdown-item input[type="file"] {
     width: 100%; /* ファイル選択ボックスの幅を100%に設定 */
 }
+
+/* help/index.blade.php 内の <ol> 要素だけに適用 */
+.help-page ol {
+    list-style: decimal !important; /* デフォルトのリストスタイルに戻す */
+    padding-left: 40px !important; /* デフォルトの余白を設定 */
+}
+
+/* help/index.blade.php 内の <ul> 要素だけに適用 */
+.help-page ul {
+    list-style: disc !important; /* デフォルトのリストスタイルに戻す */
+    padding-left: 40px !important; /* デフォルトの余白を設定 */
+}
+
+/* help/index.blade.php 内の <p> 要素のスタイル */
+.help-page p {
+    text-indent: 1em; /* 先頭の1文字分インデント */
+    margin: 8px 0; /* 上下の余白を追加 */
+}
+
+/* help/index.blade.php 内の <h4> 要素のスタイル */
+.help-page h4 {
+    font-size: 1.25rem; /* フォントサイズを大きめに */
+    font-weight: bold; /* 太字にする */
+    margin-top: 16px; /* 上の余白 */
+    margin-bottom: 8px; /* 下の余白 */
+    border-bottom: 2px solid #ccc; /* 下線を追加 */
+    padding-bottom: 4px; /* 下線との間隔 */
+}
+
+/* help/index.blade.php 内の <h5> 要素のスタイル */
+.help-page h5 {
+    font-size: 1.1rem; /* h4 より小さめのフォントサイズ */
+    font-weight: 600; /* やや太字 */
+    margin-top: 14px; /* 上の余白 */
+    margin-bottom: 6px; /* 下の余白 */
+}
+
+/* help/index.blade.php 内の <ol> および <ul> の各項目の余白 */
+.help-page ol li,
+.help-page ul li {
+    margin-bottom: 6px; /* 項目間の余白 */
+}

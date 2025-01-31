@@ -107,6 +107,10 @@
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                 @endauth
+                <!-- ヘルプページへのリンク -->
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('help') ? 'active' : '' }}" href="{{ route('help') }}">{{ __('Help') }}</a>
+                </li>
             </ul>
         </div>
     </div>

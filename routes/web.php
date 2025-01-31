@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ImportExportController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HelpController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,9 @@ Route::get('/', WelcomeController::class)->name('welcome');
 // お問い合わせページ（認証不要）
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send'); // お問い合わせフォーム送信
+
+// ヘルプページ（認証不要）
+Route::get('/help', [HelpController::class, 'index'])->name('help');
 
 // 会社の管理機能（認証が必要）
 Route::resource('companies', CompanyController::class)
