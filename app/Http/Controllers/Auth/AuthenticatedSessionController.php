@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,14 @@ class AuthenticatedSessionController extends Controller
 
         // セッションを再生成してセッション固定攻撃を防止
         $request->session()->regenerate();
+
+        // 現在の認証ユーザーを取得
+        $user = Auth::user();
+
+        // ユーザーがメール認証を完了しているかを確認し、未認証なら認証画面にリダイレクト
+        if ($user instanceof MustVerifyEmail && !$user->hasVerifiedEmail()) {
+            return redirect()->route('verification.notice')->with('status', 'Please verify your email before accessing the system.');
+        }
 
         // ダッシュボードまたは直前のURLにリダイレクト
         return redirect()->intended(route('dashboard', absolute: false));

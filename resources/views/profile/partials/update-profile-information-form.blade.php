@@ -30,22 +30,25 @@
             <x-input-error :messages="$errors->get('email')" />
         </div>
 
-        <!-- メール未確認状態 -->
-        @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
-            <div class="alert alert-warning small mt-3">
-                <p class="mb-1">{{ __('メールアドレスが未確認です。') }}</p>
-                <button form="send-verification" class="btn btn-link p-0">
-                    {{ __('確認メールを再送するにはこちらをクリックしてください。') }}
-                </button>
-                @if (session('status') === 'verification-link-sent')
-                    <p class="text-success small mt-1">{{ __('確認メールを再送しました。') }}</p>
-                @endif
-            </div>
-        @endif
-
         <!-- 保存ボタン -->
         <div class="d-flex justify-content-end">
             <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
         </div>
     </form>
+
+    <!-- メール未確認状態 -->
+    @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
+        <div class="alert alert-warning small mt-3">
+            <p class="mb-1">{{ __('メールアドレスが未確認です。') }}</p>
+            <form method="POST" action="{{ route('verification.send') }}">
+                @csrf
+                <button type="submit" class="btn btn-link p-0">
+                    {{ __('確認メールを再送するにはこちらをクリックしてください。') }}
+                </button>
+            </form>
+            @if (session('status') === 'verification-link-sent')
+                <p class="text-success small mt-1">{{ __('確認メールを再送しました。') }}</p>
+            @endif
+        </div>
+    @endif
 </section>
